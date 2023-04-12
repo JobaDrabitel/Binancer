@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "iDVG2d7jTv1LDWlhRFUoc3L8YrIQzc5Ii1x3GeW71AETAKB+R8/3Z/3s+GXq2hAtePQ/YO3aR37c0xA3My/zSg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\legen\\source\\repos\\Binancer\\Binancer\\CryptoBot.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\legen\\.nuget\\packages\\binance.client.websocket\\2.1.10\\binance.client.websocket.2.1.10.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\binance.net\\8.4.3\\binance.net.8.4.3.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\cryptoexchange.net\\5.4.1\\cryptoexchange.net.5.4.1.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.0\\microsoft.extensions.dependencyinjection.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.0\\microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\system.reactive\\4.4.1\\system.reactive.4.4.1.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\system.threading.channels\\4.7.0\\system.threading.channels.4.7.0.nupkg.sha512",
+    "C:\\Users\\legen\\.nuget\\packages\\websocket.client\\4.4.40\\websocket.client.4.4.40.nupkg.sha512"
+  ],
+  "logs": []
+}
