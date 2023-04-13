@@ -1,74 +1,68 @@
-﻿using Binance.Net.Clients;
-using Binance.Net.Enums;
-using Binance.Net.Objects;
-using Binance.Net.Objects.Models.Spot;
-using Bittrex.Net.Clients;
-using CryptoExchange.Net.Authentication;
-using CryptoExchange.Net.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using CryptoBot;
-using Binancer;
+using Bitfinex.Net.Clients;
+using Bitfinex.Net.Enums;
+using Bitfinex.Net.Objects;
+using CryptoExchange.Net.Authentication;
 
 namespace CryptoBot
 {
-     public class BinanceBot
+    class BitfinexBot
     {
-        static BinanceApiCredentials apiCredentials = GetApiCredentials();
-        static BinanceSocketClient? binanceSocketClient = GetBinanceSocketClient(apiCredentials);
-        static readonly Coin[] binanceCoins = new Coin[]
+        static ApiCredentials apiCredentials = GetApiCredentials();
+        static BitfinexSocketClient? BitfinexSocketClient = GetBitfinexSocketClient(apiCredentials);
+        static readonly Coin[] BitfinexCoins = new Coin[]
      {
-           new Coin { Symbol = "btcusdt", BuyPrice = 29500m, SellPrice = 30000m },
-           new Coin { Symbol = "ethusdt", BuyPrice = 1800m, SellPrice = 19000m },
-           new Coin { Symbol = "trxusdt", BuyPrice = 0.06530m, SellPrice = 0.06535m }
+           new Coin { Symbol = "tBTCUSD", BuyPrice = 29500m, SellPrice = 30000m },
+           new Coin { Symbol = "tETHUSD", BuyPrice = 1800m, SellPrice = 19000m },
+           new Coin { Symbol = "tTRXUSD", BuyPrice = 0.06530m, SellPrice = 0.06535m }
      };
 
-        static BinanceApiCredentials GetApiCredentials()
+        static ApiCredentials GetApiCredentials()
         {
-            var apiCredentials = new BinanceApiCredentials("<API key>", "<secret key>");
+            var apiCredentials = new ApiCredentials("<API key>", "<secret key>");
             return apiCredentials;
         }
-        public static async Task BinanceCheckAsync()
+        public static async Task BitfinexCheckAsync()
         {
             var apiCredentials = GetApiCredentials();
-            for (int i = 0; i < binanceCoins.Length; i++)
-                await GetCryptoDataAsync(binanceCoins[i].Symbol);
+            for (int i = 0; i < BitfinexCoins.Length; i++)
+                await GetCryptoDataAsync(BitfinexCoins[i].Symbol);
         }
         public static async Task GetCryptoDataAsync(string symbol)
         {
             var lastBid = 0m;
             var lastAsk = 0m;
-            if (binanceSocketClient == null) { return; }                                  
-            var depth = await binanceSocketClient.SpotStreams.SubscribeToBookTickerUpdatesAsync(symbol, async data =>
+            if (BitfinexSocketClient == null) { return; }
+            var depth = await BitfinexSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync(symbol, async data =>
             {
                 if (data.Data.BestBidPrice != lastBid)
                 {
-                    Console.WriteLine($"Price of {symbol} in Binance: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
+                    Console.WriteLine($"Price of {symbol} in Bitfinex: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
                     //await BuyAsync(symbol, myQuantity, data.Data.BestBidPrice);
                     lastBid = data.Data.BestBidPrice;
                 }
                 else if (data.Data.BestAskPrice < lastAsk)
                 {
-                    Console.WriteLine($"Price of {symbol} in Binance: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
+                    Console.WriteLine($"Price of {symbol} in Bitfinex: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
                     //await SellAsync(symbol, MainBot.myQuantity, data.Data.BestAskPrice);
                     lastBid = data.Data.BestBidPrice;
                 }
             });
         }
 
-        static async Task GetAccountInfo(BinanceClient client)
+        static async Task GetAccountInfo(BitfinexClient client)
         {
 
 
-            var accountInfo = await client.SpotApi.Account.GetAccountInfoAsync();
+            var accountInfo = await client.SpotApi.Account.GetBalancesAsync();
 
             if (accountInfo.Success)
             {
-                foreach (var balance in accountInfo.Data.Balances)
+                foreach (var balance in accountInfo.Data)
                 {
                     Console.WriteLine($"{balance.Asset} balance: {balance.Total}");
                 }
@@ -81,16 +75,14 @@ namespace CryptoBot
         static async Task PlaceOrderAsync(string mySymbol, OrderSide requiredSide, decimal requiredQuantity, decimal requiredPrice)
         {
             var apiCredentials = GetApiCredentials();
-            var client = GetBinanceClient(apiCredentials);
+            var client = GetBitfinexClient(apiCredentials);
 
-            var result = await client.UsdFuturesApi.Trading.PlaceOrderAsync
+            var result = await client.SpotApi.Trading.PlaceOrderAsync
             (
                 symbol: mySymbol,
                 side: requiredSide,
-                type: FuturesOrderType.Limit,
+                type: OrderType.ExchangeLimit,
                 quantity: requiredQuantity,
-                orderResponseType: OrderResponseType.Result,
-                timeInForce: TimeInForce.GoodTillCanceled,
                 price: requiredPrice
             );
 
@@ -113,18 +105,18 @@ namespace CryptoBot
         {
             await PlaceOrderAsync(symbol, OrderSide.Sell, quantity, price);
         }
-        static BinanceSocketClient GetBinanceSocketClient(BinanceApiCredentials apiCredentials)
+        static BitfinexSocketClient GetBitfinexSocketClient(ApiCredentials apiCredentials)
         {
-            var client = new BinanceSocketClient(new BinanceSocketClientOptions()
+            var client = new BitfinexSocketClient(new BitfinexSocketClientOptions()
             {
                 ApiCredentials = apiCredentials
 
             });
             return client;
         }
-        static BinanceClient GetBinanceClient(BinanceApiCredentials apiCredentials)
+        static BitfinexClient GetBitfinexClient(ApiCredentials apiCredentials)
         {
-            var client = new BinanceClient(new BinanceClientOptions()
+            var client = new BitfinexClient(new BitfinexClientOptions()
             {
                 ApiCredentials = apiCredentials,
             });

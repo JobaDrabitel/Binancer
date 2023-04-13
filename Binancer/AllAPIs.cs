@@ -17,7 +17,7 @@ namespace AllAPIsBot
             var krakenClient = new KrakenSocketClient();
             var btcSymbol = "btcusdt";
             var ethSymbol = "btcusdt";
-            var btcDepth = await bittrexClient.SpotStreams.SubscribeToTickerUpdatesAsync(btcSymbol, data =>
+            var btcDepth = await bitfinexClient.SpotStreams.SubscribeToTickerUpdatesAsync(btcSymbol, data =>
             {
                 Console.WriteLine($"Price of {btcSymbol}: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
             });

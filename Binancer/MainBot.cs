@@ -12,9 +12,10 @@ namespace Binancer
      
         public static decimal myQuantity = 0.001m;
         static async Task Main(string[] args)
-        {     
+        {
             await BittrexBot.BittrexCheckAsync();
             await BinanceBot.BinanceCheckAsync();
+            await BitfinexBot.BitfinexCheckAsync();
            
             while (true) { }
         }

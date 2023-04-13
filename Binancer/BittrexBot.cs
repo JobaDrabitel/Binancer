@@ -14,7 +14,6 @@ namespace CryptoBot
         {
            new Coin { Symbol = "BTC-USD", BuyPrice = 29500m, SellPrice = 30000m },
            new Coin { Symbol = "ETH-USD", BuyPrice = 1800m, SellPrice = 19000m },
-           new Coin { Symbol = "DOGE-USD", BuyPrice = 0.08410m, SellPrice = 0.08415m },
            new Coin { Symbol = "TRX-USD", BuyPrice = 0.06530m, SellPrice = 0.06535m }
         };
         static ApiCredentials GetApiCredentials()
