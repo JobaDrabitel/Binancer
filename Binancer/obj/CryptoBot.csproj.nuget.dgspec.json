@@ -52,6 +52,18 @@
             "Binance.Net": {
               "target": "Package",
               "version": "[8.4.3, )"
+            },
+            "Bitfinex.Net": {
+              "target": "Package",
+              "version": "[5.1.2, )"
+            },
+            "Bittrex.Net": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "KrakenExchange.Net": {
+              "target": "Package",
+              "version": "[3.1.7, )"
             }
           },
           "imports": [

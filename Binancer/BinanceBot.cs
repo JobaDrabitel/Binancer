@@ -1,40 +1,69 @@
 ﻿using Binance.Net.Clients;
-using Binance.Net.Objects;
 using Binance.Net.Enums;
-namespace Binancer
+using Binance.Net.Objects;
+using Binance.Net.Objects.Models.Spot;
+using Bittrex.Net.Clients;
+using CryptoExchange.Net.Authentication;
+using CryptoExchange.Net.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using CryptoBot;
+using Binancer;
+
+namespace CryptoBot
 {
-
-    class Binancer
+     public class BinanceBot
     {
-        static readonly string trx = "trxusdt";
-        static readonly string[] symbols = new string[] { "btcusdt", "ethusdt", "dogeusdt" };
-        static BinanceSocketClient? socketClient;
-        static decimal bidForBuy = 0m;
-        static decimal askForSell = 0m;
-        static decimal myQuantity = 0.001m;
-        static async Task Main(string[] args)
-        {     
-            var apiCredentials = GetApiCredentials();
-            socketClient = GetBinanceSocketClient(apiCredentials);
+        static BinanceApiCredentials apiCredentials = GetApiCredentials();
+        static BinanceSocketClient? binanceSocketClient = GetBinanceSocketClient(apiCredentials);
+        static readonly Coin[] binanceCoins = new Coin[]
+     {
+           new Coin { Symbol = "btcusdt", BuyPrice = 29500m, SellPrice = 30000m },
+           new Coin { Symbol = "ethusdt", BuyPrice = 1800m, SellPrice = 19000m },
+           new Coin { Symbol = "dogeusdt", BuyPrice = 29500m, SellPrice = 30000m },
+           new Coin { Symbol = "trxusdt", BuyPrice = 29500m, SellPrice = 30000m }
+     };
 
-            await GetCryptoDataAsync(trx);
-            while (true) { }
-        }
-        static async Task GetCryptoDataAsync(string symbol)
+        static BinanceApiCredentials GetApiCredentials()
         {
-            if (socketClient == null) { return; }
-            var depth = await socketClient.SpotStreams.SubscribeToBookTickerUpdatesAsync(symbol, async data =>
+            var apiCredentials = new BinanceApiCredentials("<API key>", "<secret key>");
+            return apiCredentials;
+        }
+        public static async Task BinanceCheckAsync()
+        {
+            var apiCredentials = GetApiCredentials();
+            for (int i = 0; i < binanceCoins.Length; i++)
+                await GetCryptoDataAsync(binanceCoins[i].Symbol);
+        }
+        public static async Task GetCryptoDataAsync(string symbol)
+        {
+            var lastBid = 0m;
+            var lastAsk = 0m;
+            if (binanceSocketClient == null) { return; }
+            var depth = await binanceSocketClient.SpotStreams.SubscribeToBookTickerUpdatesAsync(symbol, async data =>
             {
-                if (data.Data.BestBidPrice < bidForBuy)
-                    await BuyAsync(trx, myQuantity, data.Data.BestBidPrice);
-                if (data.Data.BestAskPrice < askForSell)
-                    await SellAsync(trx, myQuantity, data.Data.BestAskPrice);
+                if (data.Data.BestBidPrice != lastBid)
+                {
+                    Console.WriteLine($"Price of {symbol} in Binance: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
+                    //await BuyAsync(symbol, myQuantity, data.Data.BestBidPrice);
+                    lastBid = data.Data.BestBidPrice;
+                }
+                else if (data.Data.BestAskPrice < lastAsk)
+                {
+                    Console.WriteLine($"Price of {symbol} in Binance: \nBid price: {data.Data.BestBidPrice}, Ask price: {data.Data.BestAskPrice}");
+                    await SellAsync(symbol, MainBot.myQuantity, data.Data.BestAskPrice);
+                    lastBid = data.Data.BestBidPrice;
+                }
             });
         }
 
         static async Task GetAccountInfo(BinanceClient client)
         {
-           
+
 
             var accountInfo = await client.SpotApi.Account.GetAccountInfoAsync();
 
@@ -62,8 +91,6 @@ namespace Binancer
                 type: FuturesOrderType.Limit,
                 quantity: requiredQuantity,
                 orderResponseType: OrderResponseType.Result,
-                positionSide: PositionSide.Long,
-                workingType: WorkingType.Mark,
                 timeInForce: TimeInForce.GoodTillCanceled,
                 price: requiredPrice
             );
@@ -96,11 +123,6 @@ namespace Binancer
             });
             return client;
         }
-        static BinanceApiCredentials GetApiCredentials()
-        {
-            var apiCredentials = new BinanceApiCredentials("<API key>", "<secret key>");
-            return apiCredentials;
-        }
         static BinanceClient GetBinanceClient(BinanceApiCredentials apiCredentials)
         {
             var client = new BinanceClient(new BinanceClientOptions()
@@ -110,24 +132,4 @@ namespace Binancer
             return client;
         }
     }
-
 }
-
-
-
-
-
-
-//        //if (data.Data.BestBidPrice < prevPrice)
-//        //{
-//        //    Console.WriteLine($"Price dropped below {prevPrice}: {data.Data.BestBidPrice}");
-//        //    prevPrice = data.Data.BestBidPrice;
-//        //}
-//        //if (data.Data.BestBidPrice > prevPrice)
-//        //{
-//        //    Console.WriteLine($"Price go up: {prevPrice}: {data.Data.BestBidPrice}");
-//        //    prevPrice = data.Data.BestBidPrice;
-//        //}
-
-//    Console.ReadLine();
-

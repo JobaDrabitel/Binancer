@@ -23,3 +23,8 @@ C:\Users\legen\source\repos\Binancer\Binancer\obj\Debug\net7.0\refint\CryptoBot.
 C:\Users\legen\source\repos\Binancer\Binancer\obj\Debug\net7.0\CryptoBot.pdb
 C:\Users\legen\source\repos\Binancer\Binancer\obj\Debug\net7.0\CryptoBot.genruntimeconfig.cache
 C:\Users\legen\source\repos\Binancer\Binancer\obj\Debug\net7.0\ref\CryptoBot.dll
+C:\Users\legen\source\repos\Binancer\Binancer\bin\Debug\net7.0\Bitfinex.Net.dll
+C:\Users\legen\source\repos\Binancer\Binancer\bin\Debug\net7.0\Bittrex.Net.dll
+C:\Users\legen\source\repos\Binancer\Binancer\bin\Debug\net7.0\Crc32.NET.dll
+C:\Users\legen\source\repos\Binancer\Binancer\bin\Debug\net7.0\Kraken.Net.dll
+C:\Users\legen\source\repos\Binancer\Binancer\bin\Debug\net7.0\Microsoft.AspNet.SignalR.Client.dll

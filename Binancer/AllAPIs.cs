@@ -8,9 +8,9 @@ using Kraken.Net.Clients;
 
 namespace AllAPIsBot
 {
-    class Program
+    class AllAPIs
     {
-        static async Task Main(string[] args)
+        static async Task GetAPIsAsync(string[] args)
         {
             var bitfinexClient = new BitfinexSocketClient();
             var bittrexClient = new BittrexSocketClient();

@@ -10,6 +10,9 @@
         "dependencies": {
           "Binance.Client.Websocket": "2.1.10",
           "Binance.Net": "8.4.3",
+          "Bitfinex.Net": "5.1.2",
+          "Bittrex.Net": "7.1.2",
+          "KrakenExchange.Net": "3.1.7",
           "System.Reactive.Reference": "4.4.0.0"
         },
         "runtime": {
@@ -40,6 +43,42 @@
           }
         }
       },
+      "Bitfinex.Net/5.1.2": {
+        "dependencies": {
+          "Crc32.NET": "1.2.0",
+          "CryptoExchange.Net": "5.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Bitfinex.Net.dll": {
+            "assemblyVersion": "5.1.2.0",
+            "fileVersion": "5.1.2.0"
+          }
+        }
+      },
+      "Bittrex.Net/7.1.2": {
+        "dependencies": {
+          "CryptoExchange.Net": "5.4.1",
+          "Microsoft.AspNet.SignalR.Client": "2.4.2",
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Bittrex.Net.dll": {
+            "assemblyVersion": "7.1.2.0",
+            "fileVersion": "7.1.2.0"
+          }
+        }
+      },
+      "Crc32.NET/1.2.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Crc32.NET.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.2.0.5"
+          }
+        }
+      },
       "CryptoExchange.Net/5.4.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.0",
@@ -53,6 +92,30 @@
           }
         }
       },
+      "KrakenExchange.Net/3.1.7": {
+        "dependencies": {
+          "Crc32.NET": "1.2.0",
+          "CryptoExchange.Net": "5.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Kraken.Net.dll": {
+            "assemblyVersion": "3.1.7.0",
+            "fileVersion": "3.1.7.0"
+          }
+        }
+      },
+      "Microsoft.AspNet.SignalR.Client/2.4.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.21106"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -67,6 +130,12 @@
             "assemblyVersion": "3.1.0.0",
             "fileVersion": "3.100.19.56504"
           }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -121,12 +190,54 @@
       "path": "binance.net/8.4.3",
       "hashPath": "binance.net.8.4.3.nupkg.sha512"
     },
+    "Bitfinex.Net/5.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RCmRxmuRCVhbE2M0ZpaLx8e1tTB+s4qFv7Emk2NY7hftxis4x/UzI7WmrUGVti3XtLg6UA+LPgD4hDKyTjPvrg==",
+      "path": "bitfinex.net/5.1.2",
+      "hashPath": "bitfinex.net.5.1.2.nupkg.sha512"
+    },
+    "Bittrex.Net/7.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EzoEUUE5znXiDRV0JGUc0vlj/RdEAguA1ILbBgZBGOAINE8cqtF97V7t6OVrogpYP/oDvP3Ygtmri5DzM0k6vg==",
+      "path": "bittrex.net/7.1.2",
+      "hashPath": "bittrex.net.7.1.2.nupkg.sha512"
+    },
+    "Crc32.NET/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wNW/huzolu8MNKUnwCVKxjfAlCFpeI8AZVfF46iAWJ1+P6bTU1AZct7VAkDDEjgeeTJCVTkGZaD6jSd/fOiUkA==",
+      "path": "crc32.net/1.2.0",
+      "hashPath": "crc32.net.1.2.0.nupkg.sha512"
+    },
     "CryptoExchange.Net/5.4.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-SWH8ZueUjRCZbY1GtoiqUXciUzv7YXQBasF+lZOl/y6WUDRNZwawEhyAdpHRajG3xuAZd65wSdo21/S0hrJHqg==",
       "path": "cryptoexchange.net/5.4.1",
       "hashPath": "cryptoexchange.net.5.4.1.nupkg.sha512"
+    },
+    "KrakenExchange.Net/3.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iuJQff9Kh1Ry8Pw/k4QzLGKfql2m1sTmxOKG642XkCJYnM55JVKbJpUcpLxTBWMnGVSM8nDZzPo1QI/FChjNBA==",
+      "path": "krakenexchange.net/3.1.7",
+      "hashPath": "krakenexchange.net.3.1.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.Client/2.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BxTd9IUCvs9ijEvTOd7jlZH1flsbBiyuG+o2yINmHLkO63FZPC/g/AA5zEOBimUE0qnbZpdmg5lwSAlBHXl9IA==",
+      "path": "microsoft.aspnet.signalr.client/2.4.2",
+      "hashPath": "microsoft.aspnet.signalr.client.2.4.2.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.0": {
       "type": "package",
@@ -141,6 +252,20 @@
       "sha512": "sha512-jjo4YXRx6MIpv6DiRxJjSpl+sPP0+5VW0clMEdLyIAz44PPwrDTFrd5PZckIxIXl1kKZ2KK6IL2nkt0+ug2MQg==",
       "path": "microsoft.extensions.logging.abstractions/3.1.0",
       "hashPath": "microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+      "path": "netstandard.library/2.0.0",
+      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
