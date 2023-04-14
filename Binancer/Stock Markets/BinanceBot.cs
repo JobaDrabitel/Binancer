@@ -1,31 +1,20 @@
 ﻿using Binance.Net.Clients;
 using Binance.Net.Enums;
 using Binance.Net.Objects;
-using Binance.Net.Objects.Models.Spot;
-using Bittrex.Net.Clients;
-using CryptoExchange.Net.Authentication;
-using CryptoExchange.Net.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using CryptoBot;
-using Binancer;
+using CryptoBot.API;
 
 namespace CryptoBot
 {
-     public class BinanceBot
+    public class BinanceBot
     {
         static BinanceApiCredentials apiCredentials = GetApiCredentials();
         static BinanceSocketClient? binanceSocketClient = GetBinanceSocketClient(apiCredentials);
         static readonly Coin[] binanceCoins = new Coin[]
-     {
+        {
            new Coin { Symbol = "btcusdt", BuyPrice = 29500m, SellPrice = 30000m },
            new Coin { Symbol = "ethusdt", BuyPrice = 1800m, SellPrice = 19000m },
            new Coin { Symbol = "trxusdt", BuyPrice = 0.06530m, SellPrice = 0.06535m }
-     };
+        };
 
         static BinanceApiCredentials GetApiCredentials()
         {

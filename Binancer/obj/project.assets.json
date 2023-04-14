@@ -740,24 +740,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\legen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Kreuz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\legen\\source\\repos\\Binancer\\Binancer\\CryptoBot.csproj",
+      "projectUniqueName": "D:\\Projects\\C#\\Binancer\\Binancer\\CryptoBot.csproj",
       "projectName": "CryptoBot",
-      "projectPath": "C:\\Users\\legen\\source\\repos\\Binancer\\Binancer\\CryptoBot.csproj",
-      "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\legen\\source\\repos\\Binancer\\Binancer\\obj\\",
+      "projectPath": "D:\\Projects\\C#\\Binancer\\Binancer\\CryptoBot.csproj",
+      "packagesPath": "C:\\Users\\Kreuz\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\C#\\Binancer\\Binancer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Kreuz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -765,7 +760,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -821,7 +815,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -2,6 +2,7 @@
 using Bittrex.Net.Enums;
 using Bittrex.Net.Objects;
 using Bittrex.Net.Objects.Models;
+using CryptoBot.API;
 using CryptoExchange.Net.Authentication;
 
 namespace CryptoBot
